@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Matthew McConaughey | Minimalist Portfolio</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: purely modern & elegant -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111111;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* monochrome palette */
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #eaeaea;
+            --gray-400: #9c9c9c;
+            --gray-700: #2c2c2c;
+            --gray-900: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eaeaea;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* navigation – sharp minimal */
+        .navbar {
+            padding: 28px 0 24px;
+            border-bottom: 1px solid var(--gray-200);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(0px);
+        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.3px;
+            color: var(--black);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 36px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            color: var(--gray-700);
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: #000000;
+            border-bottom: 1px solid #000;
+            padding-bottom: 4px;
+        }
+
+        /* hero section – black & white, bold */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 64px;
+            padding: 72px 0 80px;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 0px;
+            filter: grayscale(100%);
+            object-fit: cover;
+            aspect-ratio: 1 / 1.2;
+            object-position: top 20% center;
+            box-shadow: 20px 20px 0px rgba(0,0,0,0.03);
+            background: #f0f0f0;
+            transition: 0.3s ease;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text .tag {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            font-weight: 600;
+            color: var(--gray-400);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        .hero-text .title {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--gray-700);
+            margin-bottom: 24px;
+            border-left: 3px solid #000;
+            padding-left: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .hero-bio {
+            font-size: 1rem;
+            color: #2a2a2a;
+            margin-bottom: 28px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .hero-bio strong {
+            font-weight: 600;
+            color: #000;
+        }
+        .social-mini {
+            display: flex;
+            gap: 28px;
+            font-size: 1.2rem;
+            color: #2f2f2f;
+        }
+        .social-mini i {
+            cursor: default;
+            transition: 0.2s;
+        }
+
+        /* section style – clean, monochrome */
+        section {
+            padding: 80px 0 70px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            margin-bottom: 52px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            color: #000;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 0;
+            width: 48px;
+            height: 2px;
+            background: #000;
+        }
+
+        /* grid & cards – b&w minimal */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .info-card {
+            background: #ffffff;
+            border: 1px solid var(--gray-200);
+            border-radius: 0px;
+            padding: 32px 28px;
+            transition: 0.2s;
+        }
+        .info-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            letter-spacing: -0.2px;
+            color: #000;
+            text-transform: uppercase;
+        }
+        .edu-item, .exp-item, .award-item {
+            margin-bottom: 28px;
+        }
+        .edu-item h4, .exp-item h4, .award-item h4 {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+        }
+        .date {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #5c5c5c;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .desc {
+            color: #3a3a3a;
+            font-size: 0.9rem;
+            line-height: 1.45;
+        }
+
+        /* achievements – badge minimal */
+        .achievement-badge {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 20px 0 28px;
+        }
+        .badge {
+            background: var(--gray-100);
+            border-radius: 0px;
+            padding: 8px 22px;
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            border: 1px solid #e2e2e2;
+        }
+        .list-styled {
+            margin-left: 20px;
+            margin-top: 12px;
+        }
+        .list-styled li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #2b2b2b;
+        }
+
+        /* media grid – elegant, black/white */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 20px;
+        }
+        .media-item {
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            transition: transform 0.2s ease;
+        }
+        .media-item:hover {
+            transform: translateY(-6px);
+        }
+        .media-item img, .media-item iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(100%);
+        }
+        .media-caption {
+            padding: 16px 18px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-top: 1px solid #f0f0f0;
+            background: #fff;
+            color: #222;
+        }
+        .gallery-photos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: center;  /* ← меняем с flex-start на center */
+            margin: 28px 0 20px;
+        }
+        .gallery-photos img {
+            width: 100%;              /* ← было 150% — исправляем на 100% */
+            max-width: 250px;         /* можно чуть уменьшить для аккуратности */
+            height: auto;
+            filter: grayscale(100%);
+            border: 1px solid #ddd;
+            transition: 0.2s;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+        .quote-block {
+            background: var(--gray-100);
+            padding: 48px 48px;
+            text-align: center;
+            margin: 56px 0 10px;
+            border: 1px solid #eaeaea;
+        }
+        .quote-block i {
+            font-size: 2rem;
+            color: #2f2f2f;
+            margin-bottom: 18px;
+        }
+        .quote-text {
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+            color: #111;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        footer {
+            text-align: center;
+            padding: 48px 20px;
+            color: #6c6c6c;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid #ececec;
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                flex-direction: column;
+                gap: 32px;
+                text-align: center;
+            }
+            .hero-text .title {
+                border-left: none;
+                padding-left: 0;
+            }
+            .section-title:after {
+                left: 0;
+                transform: translateX(0);
+            }
+            .section-title {
+                text-align: left;
+                display: inline-block;
+            }
+            .nav-links {
+                gap: 24px;
+            }
+            .container {
+                padding: 0 24px;
+            }
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            .quote-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-content">
+        <div class="logo">M.MCCONAUGHEY</div>
+        <div class="nav-links">
+            <a href="#bio">BIO</a>
+            <a href="#education">EDUCATION</a>
+            <a href="#experience">EXPERIENCE</a>
+            <a href="#achievements">ACHIEVEMENTS</a>
+            <a href="#media">MEDIA</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="container">
+        <!-- HERO: name, photo, bio (full name, education snippet) -->
+        <div class="hero" id="bio">
+            <div class="hero-image">
+                <img src="img/heroimg.jpg">
+            </div>
+            <div class="hero-text">
+                <div class="tag">OSCAR WINNER · AUTHOR · PROFESSOR</div>
+                <h1>Matthew<br>McConaughey</h1>
+                <div class="title">Actor, Producer, Bestselling Author of "Greenlights"</div>
+                <div class="hero-bio">
+                    <strong>Full name:</strong> Matthew David McConaughey<br>
+                    <strong>Born:</strong> November 4, 1969 (Uvalde, Texas, USA)<br>
+                    <strong>Education:</strong> B.A. in Radio-TV-Film from The University of Texas at Austin<br>
+                    <strong>Philosophy:</strong> "Just keep living" — relentless curiosity, discipline, and authentic success.
+                </div>
+                    <div class="social-mini">
+                        <a href="https://www.instagram.com/officiallymcconaughey/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/McConaughey" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@MatthewMcConaughey" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.goodreads.com/author/show/3636965.Matthew_McConaughey" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-goodreads-g"></i>
+                        </a>
+                    </div>
+            </div>
+        </div>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education">
+            <h2 class="section-title">Academic Background</h2>
+            <div class="grid-2col">
+                <div class="info-card">
+                    <h3>University of Texas</h3>
+                    <div class="edu-item">
+                        <div class="date">1989 – 1993</div>
+                        <h4>Bachelor of Arts, Radio-Television-Film</h4>
+                        <p class="desc">Graduated from Moody College of Communication. Initially pursued law, but found his calling in storytelling and cinema.</p>
+                    </div>
+                    <div class="edu-item">
+                        <div class="date">1999 · Honorary</div>
+                        <h4>Doctor of Fine Arts (Honoris Causa)</h4>
+                        <p class="desc">Recognition for contributions to arts and humanitarian work.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>Continuous Growth</h3>
+                    <div class="edu-item">
+                        <div class="date">Acting Craft</div>
+                        <h4>International Workshops</h4>
+                        <p class="desc">Studied method acting in London & Sydney, refining stage presence and character immersion.</p>
+                    </div>
+                    <div class="edu-item">
+                        <div class="date">2020 – present</div>
+                        <h4>Greenlights Philosophy</h4>
+                        <p class="desc">Author of #1 New York Times Bestseller "Greenlights" — a synthesis of 35 years of diaries and life lessons.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WORK EXPERIENCE -->
+        <section id="experience">
+            <h2 class="section-title">Professional Path</h2>
+            <div class="grid-2col">
+                <div class="info-card">
+                    <h3>Film & Television</h3>
+                    <div class="exp-item">
+                        <div class="date">1993 – Breakthrough</div>
+                        <h4>"Dazed and Confused"</h4>
+                        <p class="desc">Cult classic debut — "Alright, alright, alright" becomes iconic.</p>
+                    </div>
+                    <div class="exp-item">
+                        <div class="date">1996 – 2005</div>
+                        <h4>Romantic & Thriller Era</h4>
+                        <p class="desc">A Time to Kill, The Wedding Planner, How to Lose a Guy in 10 Days, Sahara — establishing box-office stardom.</p>
+                    </div>
+                    <div class="exp-item">
+                        <div class="date">2011 – 2014</div>
+                        <h4>The "McConaissance"</h4>
+                        <p class="desc">Lincoln Lawyer, Mud, Dallas Buyers Club, The Wolf of Wall Street, Interstellar — critically acclaimed transformation.</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3>Beyond Acting</h3>
+                    <div class="exp-item">
+                        <div class="date">2015 – now</div>
+                        <h4>Producer · j.k. livin productions</h4>
+                        <p class="desc">Developing mindful entertainment and documentaries like "The Devil We Know".</p>
+                    </div>
+                    <div class="exp-item">
+                        <div class="date">2019 – 2023</div>
+                        <h4>Professor of Practice, UT Austin</h4>
+                        <p class="desc">Taught "Script to Screen" and the acclaimed "Greenlights" course at Moody College.</p>
+                    </div>
+                    <div class="exp-item">
+                        <div class="date">2020</div>
+                        <h4>Author · Greenlights</h4>
+                        <p class="desc">International #1 bestseller, translated into 20+ languages. Continues to inspire millions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS & AWARDS -->
+        <section id="achievements">
+            <h2 class="section-title">Honors & Milestones</h2>
+            <div class="info-card" style="border:1px solid #eaeaea;">
+                <div class="achievement-badge">
+                    <span class="badge">Academy Award (2014)</span>
+                    <span class="badge">Golden Globe (2014)</span>
+                    <span class="badge">SAG Award</span>
+                    <span class="badge">NYT #1 Bestseller</span>
+                    <span class="badge">AFI Achievement Award</span>
+                </div>
+                <div class="grid-2col" style="margin-top: 10px;">
+                    <div>
+                        <h4 style="margin-bottom: 12px;"> Career Highlights</h4>
+                        <ul class="list-styled">
+                            <li>Best Actor Academy Award – "Dallas Buyers Club" (2013)</li>
+                            <li>Primetime Emmy Nomination – "True Detective" (2014)</li>
+                            <li>People's Choice Award for Favorite Dramatic Actor</li>
+                            <li>Hollywood Walk of Fame Star (2020)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 12px;"> Humanitarian & Social</h4>
+                        <ul class="list-styled">
+                            <li>Founder – just keep livin Foundation (youth fitness & wellbeing)</li>
+                            <li>Voice of Change Award 2021</li>
+                            <li>Texas Film Hall of Fame inductee</li>
+                            <li>Philanthropic work for disaster relief & education</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEDIA: VIDEOS + PHOTO GALLERY, all black/white tone -->
+        <section id="media">
+            <h2 class="section-title">Visual Archive · Video & Photography</h2>
+            <div class="media-grid">
+                <div class="media-item">
+                    <iframe src="https://www.youtube.com/embed/wD2cVhC-63I?si=DNu_9iW4vmDuo7BW" title="McConaughey on Greenlights & Success" allowfullscreen></iframe>
+                    <div class="media-caption"> Matthew McConaughey winning Best Actor | 86th Oscars (2014)</div>
+                </div>
+                <div class="media-item">
+                    <iframe src="https://www.youtube.com/embed/y_woFP79F0Q?si=pQSmcWHCDN-UMi5n" title="Oscar speech 2014 – best actor" allowfullscreen></iframe>
+                    <div class="media-caption"> Living with Confidence</div>
+                </div>
+                <div class="media-item">
+                    <iframe src="https://www.youtube.com/embed/KZJWG5wz6Y4?si=NGYt85-lqKI4QkY5" title="Dallas Buyers Club – performance" allowfullscreen></iframe>
+                    <div class="media-caption"> The Lincoln Lawyer (film 2011) - Matthew McConaughey scene</div>
+                </div>
+                <div class="media-item">
+                    <iframe src="https://www.youtube.com/embed/pII8n1YiZ14?si=btYlE87sL90bwZHI" title="Matthew on Greenlights book tour" allowfullscreen></iframe>
+                    <div class="media-caption"> Movie CLIP - Dallas Cowboys (2013) - Matthew McConaughey</div>
+                </div>
+            </div>
+
+            <!-- Photo gallery with grayscale filter (monochrome style) -->
+            <div style="margin-top: 136px;">
+                <h3 style="font-weight: 600; font-size: 1.2rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 24px;">Moments / Stills</h3>
+                <div class="gallery-photos">
+                    <img src="img/img.png">
+                    <img src="img/img_1.png">
+                    <img src="img/img_2.png">
+                    <img src="img/img_3.png">
+                    <img src="img/img_4.png">
+                    <img src="img/img_5.png">
+                    <img src="img/img_6.png">
+                    <img src="img/img_7.png">
+                </div>
+            </div>
+
+            <!-- Powerful quote block – minimal -->
+            <div class="quote-block">
+                <div class="quote-text">“The difference between success and failure is the ability to adapt, to pivot, and to keep your eyes on the green lights.”</div>
+                <div style="margin-top: 18px; font-size: 0.7rem; letter-spacing: 2px; font-weight: 500;">— MATTHEW MCCONAUGHEY, GREENLIGHTS</div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>MATTHEW MCCONAUGHEY</p>
+        <p style="margin-top: 8px;"> MADE BY EVGENII BELOUSOV 453</p>
+    </div>
+</footer>
+
+<!-- fallback images + grayscale consistency -->
+<script>
+    (function() {
+        const imgs = document.querySelectorAll('img');
+        imgs.forEach(img => {
+            img.setAttribute('loading', 'lazy');
+            img.addEventListener('error', function(e) {
+                if (!this.dataset.fallbackApplied) {
+                    this.dataset.fallbackApplied = 'true';
+                    this.src = 'https://upload.wikimedia.org/wikipedia/commons/9/93/Matthew_McConaughey_-_Gold_%282016%29.jpg';
+                }
+            });
+        });
+        // ensure all iframes have modest branding
+        const frames = document.querySelectorAll('iframe');
+        frames.forEach(f => {
+            if(f.src && !f.src.includes('?') && f.src.includes('youtube')) {
+                f.src += '?rel=0&modestbranding=1';
+            }
+        });
+    })();
+</script>
+</body>
+</html>
